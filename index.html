@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Papa's Wingeria">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <title>Ruffle Example</title>
+  <script src="main.js"></script>
+</head>
+<body>
+  <div id='ruffle' class="gameloc"></div>
+  <script>
+    var swfobject = {};
+    var isEmbedded = false;
+
+    swfobject.embedSWF = function(url, cont, width, height){
+        if (isEmbedded) {
+          return; // Skip embedding if already embedded
+        }
+
+        var ruffle = window.RufflePlayer.newest();
+        var player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
+            width: width,
+            height: height,
+            style: 'width: ' + width + 'px; height: ' + height + 'px',
+        });
+
+        player.load({ url: url });
+        isEmbedded = true;
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+      swfobject.embedSWF("https://masterkevinhd.github.io/papawingeriav2/papaswingeria_v2.swf", 'ruffle', 850, 600);
+    });
+  </script>
+</body>
+</html>
